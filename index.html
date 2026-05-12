@@ -213,7 +213,22 @@
         }
 
         #nexachat-placeholder::before {
-            content: 'COLOQUE_AQUI_SEU_CODIGO_NEXACHAT';
+            content: '<script>
+  (function(d,t) {
+    var BASE_URL="https://chat.nexaomni.com.br";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'p1bK74JzxF1NchSgrvV5cGNt',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
+';
             display: flex;
             align-items: center;
             justify-content: center;
