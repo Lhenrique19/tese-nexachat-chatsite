@@ -3,268 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexaChat - Landing Page de Teste</title>
+    <title>NexaChat - Teste o NexaOmni</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #0f172a;
+            color: #ffffff;
+            line-height: 1.6;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* Header */
         header {
             background-color: #1e293b;
             padding: 1rem 0;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
         }
-
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
             color: #3b82f6;
         }
-
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
-
         .nav-links a {
-            color: #e2e8f0;
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s;
         }
-
         .nav-links a:hover {
             color: #3b82f6;
         }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #3b82f6;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero */
         .hero {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            padding: 120px 0 80px;
             text-align: center;
+            padding: 5rem 0;
         }
-
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            color: #e2e8f0;
         }
-
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            color: #94a3b8;
+            color: #cbd5e1;
         }
-
         .cta-button {
-            display: inline-block;
-            background: #3b82f6;
-            color: white;
+            background-color: #3b82f6;
+            color: #ffffff;
             padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
             text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
         }
-
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+            background-color: #2563eb;
         }
-
-        /* Features */
         .features {
-            padding: 80px 0;
-            background-color: #1e293b;
+            padding: 5rem 0;
+            background-color: #0f172a;
         }
-
         .features h2 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 4rem;
-            color: #e2e8f0;
+            margin-bottom: 3rem;
         }
-
-        .cards-grid {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
-        .card {
-            background: #0f172a;
-            padding: 2.5rem;
-            border-radius: 15px;
+        .feature-card {
+            background-color: #1e293b;
+            padding: 2rem;
+            border-radius: 12px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #334155;
         }
-
-        .card:hover {
+        .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
         }
-
-        .card i {
-            font-size: 3rem;
-            color: #3b82f6;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
+        .feature-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #e2e8f0;
+            color: #3b82f6;
         }
-
-        .card p {
-            color: #94a3b8;
-        }
-
-        /* Footer */
+        .feature-card p { color: #cbd5e1; }
         footer {
-            background-color: #0f172a;
-            padding: 2rem 0;
+            background-color: #1e293b;
             text-align: center;
-            border-top: 1px solid #334155;
+            padding: 2rem 0;
         }
-
-        footer p {
-            color: #94a3b8;
-        }
-
-        /* Responsive */
+        footer p { color: #94a3b8; }
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .features h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .card {
-                padding: 2rem;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">NexaChat</div>
+            <div class="logo">NexaOmni</div>
             <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
+                <li><a href="#hero">Início</a></li>
                 <li><a href="#features">Recursos</a></li>
-                <li><a href="#pricing">Preços</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </nav>
     </header>
 
-    <section id="home" class="hero">
+    <section id="hero" class="hero">
         <div class="container">
             <h1>Teste o NexaChat</h1>
-            <p>Widget de chat moderno e responsivo da NexaOmni. Integre facilmente e melhore o suporte ao cliente.</p>
-            <a href="#features" class="cta-button">Explorar Recursos</a>
+            <p>A solução completa de chat para o seu negócio. Integre facilmente e ofereça suporte incrível aos seus clientes.</p>
+            <a href="#" class="cta-button" onclick="window.chatwootSDK.toggle()">Iniciar Chat</a>
         </div>
     </section>
 
     <section id="features" class="features">
         <div class="container">
-            <h2>Por que escolher o NexaChat?</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <div>🚀</div>
+            <h2>Recursos Principais</h2>
+            <div class="features-grid">
+                <div class="feature-card">
                     <h3>Integração Fácil</h3>
-                    <p>Adicione o widget em minutos com um simples script.</p>
+                    <p>Implemente em minutos com nosso SDK simples.</p>
                 </div>
-                <div class="card">
-                    <div>🕒</div>
+                <div class="feature-card">
                     <h3>Suporte 24/7</h3>
-                    <p>Atendimento contínuo para seus clientes, a qualquer hora.</p>
+                    <p>Esteja sempre disponível para seus clientes.</p>
                 </div>
-                <div class="card">
-                    <div>🎨</div>
-                    <h3>Altamente Customizável</h3>
-                    <p>Personalize cores, mensagens e comportamento conforme sua marca.</p>
-                </div>
-                <div class="card">
-                    <div>📱</div>
+                <div class="feature-card">
                     <h3>Multiplataforma</h3>
-                    <p>Funciona perfeitamente em desktop, tablet e mobile.</p>
+                    <p>Funciona em web, mobile e desktop.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Customizável</h3>
+                    <p>Personalize para combinar com sua marca.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <footer id="contact">
         <div class="container">
-            <p>&copy; 2026 NexaOmni. Todos os direitos reservados. | Landing Page de Teste para NexaChat.</p>
+            <p>&copy; 2024 NexaOmni. Todos os direitos reservados.</p>
         </div>
     </footer>
 
