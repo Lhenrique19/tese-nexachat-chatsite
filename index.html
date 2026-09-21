@@ -113,6 +113,17 @@
   #seller b{display:block;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
     color:#c4b5fd;margin-bottom:7px}
   #seller code{background:rgba(255,255,255,.14);border-radius:5px;padding:2px 7px;font-size:13.5px}
+  #seller p{margin:0}
+  #seller .row{display:flex;gap:7px;margin:10px 0 9px}
+  #seller input{flex:1;min-width:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+    color:#fff;border-radius:8px;padding:8px 10px;font-size:13.5px;font-family:inherit}
+  #seller input::placeholder{color:#8f87a4}
+  #seller input:focus{outline:none;border-color:#a78bfa;background:rgba(255,255,255,.16)}
+  #seller .go{background:var(--brand);border:0;color:#fff;border-radius:8px;padding:8px 13px;
+    font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+  #seller .go:hover{background:#6d28d9}
+  #seller .go[disabled]{opacity:.6;cursor:default}
+  #seller .hint{color:#b8b1c8;font-size:12.5px;line-height:1.45}
   #seller .x{position:absolute;top:8px;right:10px;cursor:pointer;color:#9a92ad;font-size:16px;
     line-height:1;background:none;border:0;padding:2px}
   #seller .x:hover{color:#fff}
@@ -259,7 +270,11 @@
 <div id="seller" role="status">
   <button class="x" type="button" id="seller-close" aria-label="Fechar">&times;</button>
   <b>Modo vendedor</b>
-  Abra o chat e escreva uma frase contendo <code>quero comprar</code>. O card aparece no funil Demo Express na hora.
+  <div class="row">
+    <input id="seller-name" type="text" placeholder="Nome do cliente" autocomplete="off" spellcheck="false">
+    <button class="go" type="button" id="seller-go">Abrir chat</button>
+  </div>
+  <p class="hint">O chat abre em nome desse cliente. Escreva uma frase contendo <code>quero comprar</code> e o card nasce no Demo Express já com esse nome.</p>
 </div>
 
 <script>
@@ -298,6 +313,37 @@
       panel.classList.add("on");
       d.getElementById("seller-close").addEventListener("click", function () {
         panel.classList.remove("on");
+      });
+
+      var nameField = d.getElementById("seller-name");
+      var goBtn = d.getElementById("seller-go");
+
+      goBtn.addEventListener("click", function () {
+        var nome = (nameField.value || "").trim();
+        if (!nome) { nameField.focus(); return; }
+
+        goBtn.disabled = true;
+        goBtn.textContent = "Abrindo...";
+
+        // Sessão nova a cada demonstração: contato e conversa limpos, sem reaproveitar a anterior.
+        try {
+          if (window.$chatwoot && window.$chatwoot.reset) window.$chatwoot.reset();
+        } catch (e) {}
+
+        setTimeout(function () {
+          try {
+            window.$chatwoot.setUser("demo-" + Date.now(), { name: nome });
+          } catch (e) {}
+          setTimeout(function () {
+            openChat();
+            goBtn.disabled = false;
+            goBtn.textContent = "Abrir chat";
+          }, 500);
+        }, 1400);
+      });
+
+      nameField.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter") goBtn.click();
       });
     }
   } catch (e) {}
