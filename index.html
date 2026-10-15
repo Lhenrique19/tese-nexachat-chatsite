@@ -2,353 +2,182 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loja Boa Vista — Móveis e Eletro</title>
-<meta name="description" content="Loja Boa Vista — móveis, eletrodomésticos e instalação. Atendimento pelo chat.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%237C3AED'/><path d='M8 20 L16 10 L24 20 Z' fill='white'/></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chat de Teste – Jorguinho</title>
 <style>
-  :root{
-    --brand:#7C3AED;
-    --brand-dark:#5B21B6;
-    --ink:#171423;
-    --muted:#655f75;
-    --line:#e6e2ee;
-    --bg:#ffffff;
-    --soft:#f7f5fb;
-    --radius:14px;
-    --max:1120px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
-  a{color:inherit}
-
-  /* ---------- topo ---------- */
-  .bar{background:var(--brand-dark);color:#fff;font-size:13.5px}
-  .bar .wrap{display:flex;gap:16px;align-items:center;justify-content:center;
-    min-height:38px;text-align:center;flex-wrap:wrap}
-  header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.92);
-    backdrop-filter:saturate(180%) blur(8px);z-index:50}
-  header .wrap{display:flex;align-items:center;gap:20px;min-height:68px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.02em;
-    text-decoration:none;white-space:nowrap}
-  .logo .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(140deg,var(--brand),#a855f7);
-    display:grid;place-items:center;flex:none}
-  .logo svg{display:block}
-  nav{margin-left:auto;display:flex;gap:22px;font-size:14.5px;color:var(--muted)}
-  nav a{text-decoration:none}
-  nav a:hover{color:var(--brand)}
-  @media (max-width:720px){nav{display:none}}
-
-  /* ---------- hero ---------- */
-  .hero{padding:56px 0 44px;background:
-    radial-gradient(900px 340px at 82% -12%, #ede9fe 0%, rgba(237,233,254,0) 70%),
-    var(--bg)}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-  @media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:28px}}
-  .eyebrow{display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--brand);background:#f3eefe;border-radius:999px;padding:5px 12px;margin-bottom:16px}
-  h1{font-size:clamp(30px,5vw,46px);line-height:1.12;letter-spacing:-.03em;margin:0 0 14px}
-  .lede{font-size:17.5px;color:var(--muted);margin:0 0 26px;max-width:46ch}
-  .cta{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:12px 20px;
-    font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer}
-  .btn-primary{background:var(--brand);color:#fff}
-  .btn-primary:hover{background:var(--brand-dark)}
-  .btn-ghost{border-color:var(--line);background:#fff;color:var(--ink)}
-  .btn-ghost:hover{border-color:#cdc5e0}
-
-  .hero-card{background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:22px}
-  .hero-card h3{margin:0 0 4px;font-size:15px}
-  .hero-card p{margin:0 0 18px;font-size:14px;color:var(--muted)}
-  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
-  .stat b{display:block;font-size:20px;letter-spacing:-.02em}
-  .stat span{font-size:12px;color:var(--muted)}
-
-  /* ---------- produtos ---------- */
-  section{padding:52px 0}
-  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}
-  .sec-head h2{margin:0;font-size:24px;letter-spacing:-.02em}
-  .sec-head p{margin:4px 0 0;color:var(--muted);font-size:14.5px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px}
-  .card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;
-    display:flex;flex-direction:column;transition:box-shadow .16s ease,transform .16s ease}
-  .card:hover{box-shadow:0 10px 28px rgba(23,20,35,.08);transform:translateY(-2px)}
-  .thumb{aspect-ratio:4/3;display:grid;place-items:center;border-bottom:1px solid var(--line)}
-  .t1{background:linear-gradient(135deg,#ede9fe,#ddd6fe)}
-  .t2{background:linear-gradient(135deg,#e0f2fe,#cfe9fd)}
-  .t3{background:linear-gradient(135deg,#dcfce7,#c9f2d8)}
-  .t4{background:linear-gradient(135deg,#fef3c7,#fde9ae)}
-  .thumb svg{width:58%;height:58%;opacity:.62}
-  .card-body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:6px;flex:1}
-  .card-body h4{margin:0;font-size:15.5px;font-weight:600}
-  .card-body .desc{margin:0;font-size:13.5px;color:var(--muted);flex:1}
-  .price{font-size:19px;font-weight:700;letter-spacing:-.02em;margin-top:6px}
-  .price small{display:block;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0}
-
-  /* ---------- faixa de contato ---------- */
-  .band{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .band-inner{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:38px 0}
-  @media (max-width:760px){.band-inner{grid-template-columns:1fr}}
-  .band h2{margin:0 0 6px;font-size:22px;letter-spacing:-.02em}
-  .band p{margin:0;color:var(--muted);font-size:15px;max-width:52ch}
-
-  /* ---------- rodapé ---------- */
-  footer{padding:34px 0 44px;font-size:13.5px;color:var(--muted)}
-  .foot{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-  .foot nav{margin:0;gap:18px}
-
-  /* ---------- painel do vendedor (só com ?demo=1) ---------- */
-  #seller{position:fixed;left:16px;bottom:16px;z-index:60;max-width:310px;
-    background:#171423;color:#fff;border-radius:12px;padding:14px 16px;
-    box-shadow:0 12px 34px rgba(0,0,0,.28);font-size:13.5px;line-height:1.5;display:none}
-  #seller.on{display:block}
-  #seller b{display:block;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
-    color:#c4b5fd;margin-bottom:7px}
-  #seller code{background:rgba(255,255,255,.14);border-radius:5px;padding:2px 7px;font-size:13.5px}
-  #seller p{margin:0}
-  #seller .row{display:flex;gap:7px;margin:10px 0 9px}
-  #seller input{flex:1;min-width:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
-    color:#fff;border-radius:8px;padding:8px 10px;font-size:13.5px;font-family:inherit}
-  #seller input::placeholder{color:#8f87a4}
-  #seller input:focus{outline:none;border-color:#a78bfa;background:rgba(255,255,255,.16)}
-  #seller .go{background:var(--brand);border:0;color:#fff;border-radius:8px;padding:8px 13px;
-    font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
-  #seller .go:hover{background:#6d28d9}
-  #seller .go[disabled]{opacity:.6;cursor:default}
-  #seller .hint{color:#b8b1c8;font-size:12.5px;line-height:1.45}
-  #seller .x{position:absolute;top:8px;right:10px;cursor:pointer;color:#9a92ad;font-size:16px;
-    line-height:1;background:none;border:0;padding:2px}
-  #seller .x:hover{color:#fff}
-  @media (max-width:560px){#seller{display:none !important}}
+  :root{--bg:#efeae2;--head:#008069;--out:#d9fdd3;--in:#fff;--text:#111b21;--sub:#667781;--tick:#53bdeb}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#d1d7db;color:var(--text);display:flex;justify-content:center}
+  .app{width:100%;max-width:520px;height:100dvh;display:flex;flex-direction:column;background:var(--bg);position:relative;box-shadow:0 0 20px rgba(0,0,0,.15)}
+  header{background:var(--head);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:12px}
+  .avatar{width:40px;height:40px;border-radius:50%;background:#dfe5e7;color:#54656f;display:grid;place-items:center;font-weight:700}
+  .hinfo{flex:1;min-width:0}
+  .hname{font-size:16px;font-weight:600}
+  .hstatus{font-size:12px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  header button{background:rgba(255,255,255,.15);border:0;color:#fff;padding:7px 10px;border-radius:8px;font-size:12px;cursor:pointer}
+  #msgs{flex:1;overflow-y:auto;padding:14px 10px;display:flex;flex-direction:column;gap:4px;
+    background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+  .day{align-self:center;background:#fff;color:var(--sub);font-size:12px;padding:4px 10px;border-radius:8px;margin:6px 0;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+  .msg{max-width:82%;padding:6px 8px 6px 9px;border-radius:8px;font-size:14.5px;line-height:1.35;box-shadow:0 1px 1px rgba(0,0,0,.1);white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere}
+  .msg.out{align-self:flex-end;background:var(--out);border-top-right-radius:0}
+  .msg.in{align-self:flex-start;background:var(--in);border-top-left-radius:0}
+  .meta{float:right;margin:6px 0 -3px 10px;font-size:11px;color:var(--sub);display:flex;gap:3px;align-items:center}
+  .tick{color:var(--sub);font-size:13px;letter-spacing:-3px}
+  .tick.read{color:var(--tick)}
+  .typing{align-self:flex-start;background:#fff;border-radius:8px;border-top-left-radius:0;padding:10px 14px;box-shadow:0 1px 1px rgba(0,0,0,.1);display:none}
+  .typing span{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:#9aa6ad;animation:b 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes b{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+  footer{background:#f0f2f5;padding:8px;display:flex;gap:8px;align-items:flex-end}
+  textarea{flex:1;border:0;border-radius:20px;padding:10px 14px;font:inherit;font-size:15px;resize:none;max-height:120px;outline:none}
+  #send{width:44px;height:44px;border-radius:50%;border:0;background:#00a884;color:#fff;font-size:18px;cursor:pointer;flex:none}
+  #send:disabled{opacity:.5}
+  #err{background:#fff3cd;color:#664d03;font-size:12px;padding:6px 12px;display:none}
+  .modal{position:absolute;inset:0;background:rgba(0,0,0,.45);display:none;place-items:center;padding:20px}
+  .box{background:#fff;border-radius:12px;padding:18px;width:100%;max-width:380px}
+  .box h3{margin-bottom:10px}
+  .box label{font-size:12px;color:var(--sub);display:block;margin:8px 0 3px}
+  .box input{width:100%;padding:9px;border:1px solid #ccd;border-radius:8px;font:inherit}
+  .box .row{display:flex;gap:8px;margin-top:14px;justify-content:flex-end}
+  .box button{padding:8px 14px;border:0;border-radius:8px;cursor:pointer;background:#00a884;color:#fff}
+  .box button.g{background:#e9edef;color:#111}
 </style>
 </head>
 <body>
+<div class="app">
+  <header>
+    <div class="avatar">J</div>
+    <div class="hinfo"><div class="hname">Jorguinho (teste)</div><div class="hstatus" id="status">online</div></div>
+    <button id="btnNew" title="Começa um novo contato e uma nova conversa">Nova conversa</button>
+  </header>
+  <div id="err"></div>
+  <div id="msgs"><div class="day">HOJE</div><div class="typing" id="typing"><span></span><span></span><span></span></div></div>
+  <footer>
+    <textarea id="txt" rows="1" placeholder="Digite uma mensagem"></textarea>
+    <button id="send" aria-label="Enviar">&#10148;</button>
+  </footer>
 
-<div class="bar"><div class="wrap">Frete grátis para toda a região · Instalação no mesmo dia em compras acima de R$ 1.500</div></div>
-
-<header>
-  <div class="wrap">
-    <a class="logo" href="#">
-      <span class="mark">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 17 L12 7 L20 17 Z" fill="#fff"/>
-        </svg>
-      </span>
-      Loja Boa Vista
-    </a>
-    <nav>
-      <a href="#produtos">Produtos</a>
-      <a href="#servicos">Instalação</a>
-      <a href="#contato">Atendimento</a>
-    </nav>
-  </div>
-</header>
-
-<div class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Novidades da semana</span>
-      <h1>Móveis e eletro com instalação inclusa.</h1>
-      <p class="lede">Escolha pelo site, tire dúvidas pelo chat e receba com instalação agendada. Sem fila, sem ligação, sem repetir informação.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#produtos">Ver produtos</a>
-        <button class="btn btn-ghost" type="button" id="open-chat">Falar pelo chat</button>
-      </div>
-    </div>
-    <div class="hero-card">
-      <h3>Atendimento pelo chat</h3>
-      <p>Nosso time responde em poucos minutos, no horário comercial.</p>
-      <div class="stat-row">
-        <div class="stat"><b>4 min</b><span>resposta média</span></div>
-        <div class="stat"><b>1.240</b><span>pedidos no mês</span></div>
-        <div class="stat"><b>4,8</b><span>satisfação</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section id="produtos">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <h2>Mais procurados</h2>
-        <p>Pronta entrega, com instalação opcional.</p>
-      </div>
-    </div>
-    <div class="grid">
-
-      <article class="card">
-        <div class="thumb t1">
-          <svg viewBox="0 0 64 64" fill="none" stroke="#5B21B6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M10 34v16M54 34v16M8 34c0-5 3-8 8-8h32c5 0 8 3 8 8v8H8z"/>
-            <path d="M14 26v-6c0-4 3-7 7-7h22c4 0 7 3 7 7v6"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h4>Sofá retrátil 3 lugares</h4>
-          <p class="desc">Tecido suede, encosto reclinável, montagem inclusa.</p>
-          <div class="price">R$ 2.390<small>ou 10x sem juros</small></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="thumb t2">
-          <svg viewBox="0 0 64 64" fill="none" stroke="#0369a1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="16" y="8" width="32" height="48" rx="5"/>
-            <path d="M16 28h32M23 17v5M23 36v6"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h4>Geladeira frost free 420L</h4>
-          <p class="desc">Duas portas, inox, baixo consumo, entrega em 48h.</p>
-          <div class="price">R$ 3.780<small>ou 12x sem juros</small></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="thumb t3">
-          <svg viewBox="0 0 64 64" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="12" y="14" width="40" height="36" rx="5"/>
-            <circle cx="32" cy="34" r="10"/>
-            <path d="M20 22h8"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h4>Lava e seca 11kg</h4>
-          <p class="desc">Ciclo rápido, motor inverter, instalação hidráulica inclusa.</p>
-          <div class="price">R$ 4.120<small>ou 12x sem juros</small></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="thumb t4">
-          <svg viewBox="0 0 64 64" fill="none" stroke="#a16207" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="8" y="16" width="48" height="28" rx="4"/>
-            <path d="M24 52h16M32 44v8"/>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h4>Smart TV 55" 4K</h4>
-          <p class="desc">Painel LED, suporte de parede e instalação no mesmo dia.</p>
-          <div class="price">R$ 2.950<small>ou 10x sem juros</small></div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<div class="band" id="servicos">
-  <div class="wrap band-inner">
-    <div>
-      <h2>Dúvida sobre medida, prazo ou instalação?</h2>
-      <p>Abre o chat aqui do lado e fala com a gente. Alguém do time responde e acompanha seu pedido do orçamento até a entrega.</p>
-    </div>
-    <button class="btn btn-primary" type="button" id="open-chat-2">Abrir o chat</button>
-  </div>
-</div>
-
-<footer id="contato">
-  <div class="wrap foot">
-    <span>© Loja Boa Vista — ambiente de demonstração NexaOmni.</span>
-    <nav>
-      <a href="#produtos">Produtos</a>
-      <a href="#servicos">Instalação</a>
-      <a href="#contato">Atendimento</a>
-    </nav>
-  </div>
-</footer>
-
-<div id="seller" role="status">
-  <button class="x" type="button" id="seller-close" aria-label="Fechar">&times;</button>
-  <b>Modo vendedor</b>
-  <div class="row">
-    <input id="seller-name" type="text" placeholder="Nome do cliente" autocomplete="off" spellcheck="false">
-    <button class="go" type="button" id="seller-go">Abrir chat</button>
-  </div>
-  <p class="hint">O chat abre em nome desse cliente. Escreva uma frase contendo <code>quero comprar</code> e o card nasce no Demo Express já com esse nome.</p>
+  <div class="modal" id="modal"><div class="box">
+    <h3>Quem está testando?</h3>
+    <label>Nome do contato</label><input id="inName" placeholder="Bianca">
+    <div class="row"><button id="go">Começar</button></div>
+  </div></div>
 </div>
 
 <script>
-(function () {
-  var BASE_URL = "https://chat.nexaomni.com.br";
-  var WEBSITE_TOKEN = "aqJWBgDUh1rBCR6MBFGZ6Aoz";
+// ======== CONFIGURAÇÃO ========
+const BASE_URL = "https://chat.nexaomni.com.br";
+const INBOX_IDENTIFIER = "JyKtBaGmXJorKvajwJDssN2r";
+const POLL_MS = 2500;
+// ==============================
 
-  window.chatwootSettings = {
-    position: "right",
-    type: "expanded_bubble",
-    launcherTitle: "Falar com a loja",
-    locale: "pt_BR"
-  };
+const $ = id => document.getElementById(id);
+const msgsEl = $("msgs"), typingEl = $("typing"), txt = $("txt");
+const API = `${BASE_URL}/public/api/v1/inboxes/${INBOX_IDENTIFIER}`;
+const KEY = "jorguinho_chat_v1";
+let state = load();
+let seen = new Set();
+let pending = 0; // mensagens enviadas aguardando resposta
+let timer = null;
 
-  var d = document, t = "script";
-  var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-  g.src = BASE_URL + "/packs/js/sdk.js";
-  g.async = true;
-  s.parentNode.insertBefore(g, s);
-  g.onload = function () {
-    window.chatwootSDK.run({ websiteToken: WEBSITE_TOKEN, baseUrl: BASE_URL });
-  };
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+function showErr(m){ const e=$("err"); e.textContent=m; e.style.display=m?"block":"none"; }
+function hhmm(ts){ const d=new Date(ts*1000); return d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}); }
 
-  function openChat() {
-    if (window.$chatwoot && window.$chatwoot.toggle) window.$chatwoot.toggle("open");
+async function api(path, opts={}){
+  const r = await fetch(API+path, {headers:{"Content-Type":"application/json"}, ...opts});
+  if(!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}
+
+async function ensureSession(){
+  if(!state.contact){
+    $("modal").style.display="grid";
+    await new Promise(res => { $("go").onclick = () => {
+      state.name = $("inName").value.trim() || "Teste";
+      $("modal").style.display="none"; res();
+    };});
+    const body = {name: state.name};
+    const c = await api("/contacts", {method:"POST", body:JSON.stringify(body)});
+    state.contact = c.source_id || c.pubsub_token && c.source_id;
+    state.pubsub = c.pubsub_token;
+    save();
   }
-  ["open-chat", "open-chat-2"].forEach(function (id) {
-    var el = d.getElementById(id);
-    if (el) el.addEventListener("click", openChat);
-  });
+  if(!state.conv){
+    const cv = await api(`/contacts/${state.contact}/conversations`, {method:"POST", body:"{}"});
+    state.conv = cv.id; save();
+  }
+}
 
-  // Painel discreto para o vendedor: aparece só com ?demo=1 na URL.
-  try {
-    if (new URLSearchParams(location.search).get("demo") === "1") {
-      var panel = d.getElementById("seller");
-      panel.classList.add("on");
-      d.getElementById("seller-close").addEventListener("click", function () {
-        panel.classList.remove("on");
-      });
+function addMsg(m){
+  if(seen.has(m.id)) return;
+  seen.add(m.id);
+  // message_type: 0 = entrada (contato), 1 = saída (IA/agente), 2 = atividade, 3 = template
+  if(m.message_type === 2) return;
+  if(m.private) return;
+  const out = m.message_type === 0;
+  const div = document.createElement("div");
+  div.className = "msg " + (out ? "out" : "in");
+  const content = (m.content || "").trim();
+  const att = (m.attachments||[]).map(a=>a.data_url?`\n📎 ${a.data_url}`:"").join("");
+  div.textContent = content + att;
+  const meta = document.createElement("span");
+  meta.className = "meta";
+  meta.innerHTML = hhmm(m.created_at) + (out ? ' <span class="tick read">✓✓</span>' : "");
+  div.appendChild(meta);
+  msgsEl.insertBefore(div, typingEl);
+  msgsEl.scrollTop = msgsEl.scrollHeight;
+  if(!out){ pending = 0; typingEl.style.display = "none"; $("status").textContent = "online"; }
+}
 
-      var nameField = d.getElementById("seller-name");
-      var goBtn = d.getElementById("seller-go");
+async function poll(){
+  if(!state.conv) return;
+  try{
+    const r = await api(`/contacts/${state.contact}/conversations/${state.conv}/messages`);
+    const list = Array.isArray(r) ? r : (r.payload || []);
+    list.sort((a,b)=>a.created_at-b.created_at).forEach(addMsg);
+    showErr("");
+  }catch(e){ showErr("Sem conexão com o servidor ("+e.message+"). Tentando de novo..."); }
+}
 
-      goBtn.addEventListener("click", function () {
-        var nome = (nameField.value || "").trim();
-        if (!nome) { nameField.focus(); return; }
+async function send(){
+  const t = txt.value.trim();
+  if(!t) return;
+  txt.value=""; txt.style.height="auto";
+  $("send").disabled = true;
+  try{
+    await ensureSession();
+    const m = await api(`/contacts/${state.contact}/conversations/${state.conv}/messages`,
+      {method:"POST", body:JSON.stringify({content:t, echo_id:String(Date.now())})});
+    addMsg({id:m.id, content:m.content||t, message_type:0, created_at:m.created_at||Math.floor(Date.now()/1000)});
+    pending++; typingEl.style.display="block"; $("status").textContent="digitando...";
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    poll();
+    // evita "digitando" eterno caso a IA não responda
+    setTimeout(()=>{ if(pending){ typingEl.style.display="none"; $("status").textContent="online"; } }, 60000);
+  }catch(e){
+    const net = e instanceof TypeError;
+    showErr("Falha ao enviar: "+e.message+(net?" — sem acesso ao servidor. Abra a página pelo link https:// (não pelo arquivo no computador), desative bloqueadores de anúncio/VPN e tente de novo.":""));
+    if(!state.conv){ state.contact=null; save(); }
+    txt.value=t; }
+  finally{ $("send").disabled=false; txt.focus(); }
+}
 
-        goBtn.disabled = true;
-        goBtn.textContent = "Abrindo...";
+function reset(){
+  if(!confirm("Começar uma nova conversa com outro contato?")) return;
+  state = {}; save(); seen = new Set(); pending = 0;
+  [...msgsEl.querySelectorAll(".msg")].forEach(n=>n.remove());
+  typingEl.style.display="none";
+}
 
-        // Sessão nova a cada demonstração: contato e conversa limpos, sem reaproveitar a anterior.
-        try {
-          if (window.$chatwoot && window.$chatwoot.reset) window.$chatwoot.reset();
-        } catch (e) {}
-
-        setTimeout(function () {
-          try {
-            window.$chatwoot.setUser("demo-" + Date.now(), { name: nome });
-          } catch (e) {}
-          setTimeout(function () {
-            openChat();
-            goBtn.disabled = false;
-            goBtn.textContent = "Abrir chat";
-          }, 500);
-        }, 1400);
-      });
-
-      nameField.addEventListener("keydown", function (ev) {
-        if (ev.key === "Enter") goBtn.click();
-      });
-    }
-  } catch (e) {}
-})();
+$("send").onclick = send;
+$("btnNew").onclick = reset;
+txt.addEventListener("keydown", e => { if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); send(); }});
+txt.addEventListener("input", ()=>{ txt.style.height="auto"; txt.style.height=Math.min(txt.scrollHeight,120)+"px"; });
+timer = setInterval(poll, POLL_MS);
+poll();
 </script>
-
 </body>
 </html>
